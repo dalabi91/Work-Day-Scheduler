@@ -23,12 +23,28 @@ $(document).ready(function () {
       }
     });
   }
-  // get saved events from local storage
+  // Function to save events to local storage on button click
+  $(".saveBtn").on("click", function () {
+    var eventText = $(this).siblings(".description").val();
+    var eventHour = parseInt($(this).parent().attr("id").replace("hour", ""));
+    localStorage.setItem("event_" + eventHour, eventText);
+  });
 
-  // on button click save event to local storage
+  // get saved events from local storage
+  function loadSavedEvents() {
+    $(".time-block").each(function () {
+      var blockHour = parseInt($(this).attr("id").replace("hour", ""));
+      var savedEvent = localStorage.getItem("event_" + blockHour);
+
+      if (savedEvent) {
+        $(this).find(".description").val(savedEvent);
+      }
+    });
+  }
 
   // Append the columns to the timeblock and the timeblock to the container
 
   //call function
   updateTimeblockStyles();
+  loadSavedEvents();
 });
