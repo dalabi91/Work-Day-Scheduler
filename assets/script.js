@@ -4,14 +4,31 @@
 var currentDate = dayjs();
 $("#currentDay").text(currentDate.format("dddd, MMMM D, YYYY"));
 
-// Loop through the hours of the day to create timeblocks
+$(document).ready(function () {
+  // Function to update timeblock styling based on the current time
+  function updateTimeblockStyles() {
+    var currentHour = dayjs().hour();
 
-// Add past, present, or future class based on the current time
+    $(".time-block").each(function () {
+      var blockHour = parseInt($(this).attr("id").replace("hour", ""));
+      $(this).removeClass("past present future");
 
-// get saved events from local storage
+      // Add past, present, or future class based on the current time
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+      } else if (blockHour === currentHour) {
+        $(this).addClass("present");
+      } else {
+        $(this).addClass("future");
+      }
+    });
+  }
+  // get saved events from local storage
 
-// on button click save event to local storage
+  // on button click save event to local storage
 
-// Append the columns to the timeblock and the timeblock to the container
+  // Append the columns to the timeblock and the timeblock to the container
 
-//call function
+  //call function
+  updateTimeblockStyles();
+});
