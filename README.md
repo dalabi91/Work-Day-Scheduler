@@ -32,7 +32,7 @@ Before starting this project, I made sure I familiarized myself with the accepta
 
 ## Usage
 
-This webpage can be accessed by [**clicking here**](https://dalabi91.github.io/Password-Generator/)
+This webpage can be accessed by [**clicking here**](https://dalabi91.github.io/Work-Day-Scheduler/)
 
 To use the application, click the link above
 
